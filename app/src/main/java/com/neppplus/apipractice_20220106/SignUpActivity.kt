@@ -85,5 +85,28 @@ class SignUpActivity : AppCompatActivity() {
 
         }
 
+        btnEmailCheck.setOnClickListener {
+
+            val inputEmail = edtEmail.text.toString()
+
+            val retrofit = ServerAPI.getRetrofit()
+            val apiList = retrofit.create(APIList::class.java)
+
+            apiList.getRequestDuplCheck("EMAIL", inputEmail).enqueue( object : Callback<BasicResponse> {
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
+
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+
+            })
+
+        }
+
     }
 }
