@@ -5,6 +5,7 @@ import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface APIList {
 
@@ -19,5 +20,15 @@ interface APIList {
         @Field("password") pw: String,
     ) : Call<BasicResponse>  // ( BasicResponse 형태의 응답을 받는 ) API 호출 기능을 만들어냄.
 
+//    회원가입
+
+    @FormUrlEncoded
+    @PUT("/user")
+    fun putRequestSignUp(
+        @Field("email")  email: String,
+        @Field("password") pw: String,
+        @Field("nick_name") nick: String,
+        @Field("phone") phone: String,
+    ) : Call<BasicResponse> // 회원가입도, 로그인 처럼, code/message/data 세가지만 제일 바깥 { } 담겨있다.
 
 }
