@@ -6,6 +6,7 @@
     android:padding="10dp">
 
     <ImageView
+        android:id="@+id/imgThumbnail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher" />
@@ -18,11 +19,13 @@
         android:layout_marginTop="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUserProfile"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/txtUserNickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -31,6 +34,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txtReviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="리뷰 제목을 적습니다."
