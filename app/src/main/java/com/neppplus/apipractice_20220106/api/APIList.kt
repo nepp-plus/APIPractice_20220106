@@ -36,6 +36,9 @@ interface APIList {
         @Query("value") value: String,
     ) : Call<BasicResponse>
 
+    @GET("/review")
+    fun getRequestAllReview() : Call<BasicResponse>
+
 
 
 }
