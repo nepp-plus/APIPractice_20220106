@@ -23,10 +23,6 @@ class LoginActivity : AppCompatActivity() {
             val inputEmail = edtEmail.text.toString()
             val inputPw = edtPassword.text.toString()
 
-//            서버 API의 로그인 기능에 활용. (ServerAPI 클래스 / APIList 인터페이스 결합)
-
-            val retrofit = ServerAPI.getRetrofit() // API 연결 도구 생성
-            val apiList = retrofit.create(APIList::class.java) // 연결도구 + 기능목록 결합 객체 생성.
 
 //            실제 로그인 기능 호출 (Request)
             apiList.postRequestLogin(inputEmail, inputPw).enqueue(object : Callback<BasicResponse> {
