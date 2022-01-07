@@ -46,5 +46,7 @@ interface APIList {
     fun getRequestMyInfo() : Call<BasicResponse>
 
 
+    @GET("/product")
+    fun getRequestAllProduct() : Call<BasicResponse>
 
 }
