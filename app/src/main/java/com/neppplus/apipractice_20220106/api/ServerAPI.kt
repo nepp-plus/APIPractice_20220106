@@ -1,5 +1,8 @@
 package com.neppplus.apipractice_20220106.api
 
+import android.content.Context
+import com.neppplus.apipractice_20220106.utils.ContextUtil
+import okhttp3.Interceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,7 +23,7 @@ class ServerAPI {
 
 //        retrofit 변수에 환경설정 + 객체화 => 가져다 쓸 수 있게 하는 기능 (함수)
 
-        fun getRetrofit() : Retrofit {
+        fun getRetrofit(context: Context) : Retrofit {
 
 //            retrofit 변수가 null이라면 => 새 객체를 만들어주자.
 //            null이 아니라면 => 이미 만들어둔게 있다 => 있는 객체를 사용하게 하자.
@@ -31,6 +34,25 @@ class ServerAPI {
 //                토큰의 경우, 여러 API 함수에서 사용해야함 + 매번 같은 토큰값 입력 (ContextUtil.getToken())
 //                    => 자동화 하면 편하다.
 //                    => 레트로핏 객체 생성 전에, 토큰에 관련된 세팅을 코드로 추가해두자.
+
+
+//                API 요청이 만들어질때 -> 가로채서, 헤더를 추가해주자.
+//                  헤더가 붙여지고 나서 => 나머지 API 요청 실행. (자동으로 헤더 첨부 효과 발생)
+
+                val interceptor = Interceptor {
+                    with(it) {
+
+//                        새 리퀘스트를 만들자. => 헤더가 첨부된 리퀘스트
+
+                        val newRequest = request().newBuilder()
+                            .addHeader("X-Http-Token", ContextUtil.getToken(context))
+                            .build()
+
+//                        완성된 새 리퀘스트로 작업 이어가게
+                        proceed(newRequest)
+
+                    }
+                }
 
 //                실제 레트로핏 객체 생성.
                 retrofit = Retrofit.Builder()
