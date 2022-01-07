@@ -28,6 +28,10 @@ class ServerAPI {
 
             if (retrofit == null) {
 
+//                토큰의 경우, 여러 API 함수에서 사용해야함 + 매번 같은 토큰값 입력 (ContextUtil.getToken())
+//                    => 자동화 하면 편하다.
+//                    => 레트로핏 객체 생성 전에, 토큰에 관련된 세팅을 코드로 추가해두자.
+
 //                실제 레트로핏 객체 생성.
                 retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL) // 어느 서버안에서 움직일건지?
