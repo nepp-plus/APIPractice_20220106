@@ -49,4 +49,16 @@ interface APIList {
     @GET("/product")
     fun getRequestAllProduct() : Call<BasicResponse>
 
+//    리뷰 등록하기
+
+    @FormUrlEncoded
+    @POST("/review")
+    fun postRequestSubmitReview(
+        @Field("product_id")  productId: Int,
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("score") score: Float,
+        @Field("tag_list") tagStr: String, // 임시로 ""을 넣어줄 예정.
+    ) : Call<BasicResponse>
+
 }
