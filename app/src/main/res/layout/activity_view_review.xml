@@ -94,6 +94,7 @@
                         android:id="@+id/scoreRatingBar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:srb_stepSize="0.5"
                         app:srb_isIndicator="true"/>
 
 
