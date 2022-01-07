@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.neppplus.apipractice_20220106.R
+import com.neppplus.apipractice_20220106.ViewReviewActivity
 import com.neppplus.apipractice_20220106.models.ReviewData
 
 
@@ -32,6 +33,14 @@ class ReviewAdapter(
 
             txtReviewTitle.text = data.title
             txtUserNickname.text = data.user.nick_name
+
+            row.setOnClickListener {
+
+                val myIntent = Intent(mContext, ViewReviewActivity::class.java)
+                myIntent.putExtra("review", data)
+                mContext.startActivity(myIntent)
+
+            }
 
         }
 

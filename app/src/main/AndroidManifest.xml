@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APIPractice_20220106">
         <activity
+            android:name=".ViewReviewActivity"
+            android:exported="true" />
+        <activity
             android:name=".EditReviewActivity"
             android:exported="true" />
         <activity
