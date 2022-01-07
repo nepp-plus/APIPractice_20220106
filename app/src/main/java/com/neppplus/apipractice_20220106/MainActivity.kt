@@ -23,6 +23,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         btnViewProduct.setOnClickListener {
 
             val myIntent = Intent(mContext, ProductListActivity::class.java)
