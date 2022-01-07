@@ -18,6 +18,14 @@ class ProductListActivity : BaseActivity() {
         apiList.getRequestAllProduct().enqueue(object : Callback<BasicResponse> {
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 
+                if (response.isSuccessful) {
+
+                    val br = response.body()!!
+
+                    mProductList.addAll( br.data.products )
+
+                }
+
             }
 
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
