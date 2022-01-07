@@ -40,5 +40,13 @@ interface APIList {
     fun getRequestAllReview() : Call<BasicResponse>
 
 
+//    내 정보 가져오기 -> 토큰값 첨부
+
+    @GET("/user")
+    fun getRequestMyInfo(
+        @Header("X-Http-Token") token: String
+    ) : Call<BasicResponse>
+
+
 
 }
