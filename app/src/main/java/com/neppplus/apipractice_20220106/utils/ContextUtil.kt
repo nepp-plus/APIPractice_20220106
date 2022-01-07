@@ -26,6 +26,13 @@ class ContextUtil {
             pref.edit().putString(TOKEN, token).apply()  // String 하나 추가 기록 -> 저장 (apply)
         }
 
+        fun getToken(context: Context) : String {
+
+            val pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE) // 메모장 파일 열기
+            return  pref.getString(TOKEN, "")!! // kotlin - null관리 기법 : 절대 null이 아니라고 우기면서 return.
+
+        }
+
     }
 
 
