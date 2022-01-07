@@ -3,8 +3,10 @@ package com.neppplus.apipractice_20220106
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.firebase.messaging.FirebaseMessaging
 import com.neppplus.apipractice_20220106.adapters.ReviewAdapter
 import com.neppplus.apipractice_20220106.models.BasicResponse
 import com.neppplus.apipractice_20220106.models.ReviewData
@@ -23,7 +25,16 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
 
+            if (it.isSuccessful) {
+
+                val deviceToken = it.result!!
+                Log.d("FCM토큰", deviceToken)
+
+            }
+
+        }
 
         btnViewProduct.setOnClickListener {
 
