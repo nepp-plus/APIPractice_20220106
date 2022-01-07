@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.neppplus.apipractice_20220106.api.APIList
 import com.neppplus.apipractice_20220106.api.ServerAPI
 import com.neppplus.apipractice_20220106.models.BasicResponse
+import com.neppplus.apipractice_20220106.utils.ContextUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -51,7 +52,9 @@ class LoginActivity : BaseActivity() {
 //                         => 본인이 누군지 알려줘야하는 API들은 토큰값이 필요함. => 다른 (거의 모든) 화면에도 전달해야함.
 //                         => 사용하는 기기의 보조기억장치에 기록해두고 -> 보조기억장치에서 꺼내다 사용.
 
-//                        메인화면으로 이동
+                        ContextUtil.setToken(mContext, br.data.token) // 보조기억장치에 토큰값 저장장
+
+//                       메인화면으로 이동
                         val myIntent = Intent(mContext, MainActivity::class.java)
                         startActivity(myIntent)
 
