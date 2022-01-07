@@ -2,8 +2,10 @@ package com.neppplus.apipractice_20220106
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.neppplus.apipractice_20220106.models.BasicResponse
 import com.neppplus.apipractice_20220106.utils.ContextUtil
+import kotlinx.android.synthetic.main.activity_my_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,6 +21,25 @@ class MyProfileActivity : BaseActivity() {
 
         apiList.getRequestMyInfo( ContextUtil.getToken(mContext) ).enqueue( object : Callback<BasicResponse> {
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+
+                if (response.isSuccessful) {
+//                br 변수로 담아두자.
+                    val br = response.body()!!
+
+//                    사용자가 누구인지? 변수에 담자.
+
+                    val myInfo = br.data.user
+
+//                    UI에 닉네임 / 프사 등등 반영
+
+                    txtMyNickname.text =  myInfo.nick_name
+
+                    Glide.with(mContext).load(myInfo.profile_img).into(imgMyProfile)
+
+
+                }
+
+
 
             }
 
