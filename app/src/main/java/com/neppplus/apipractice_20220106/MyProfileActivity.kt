@@ -36,6 +36,9 @@ class MyProfileActivity : BaseActivity() {
 
                     Glide.with(mContext).load(myInfo.profile_img).into(imgMyProfile)
 
+                    txtEmail.text = myInfo.email
+                    txtPhoneNum.text = myInfo.phone
+
 
                 }
 
