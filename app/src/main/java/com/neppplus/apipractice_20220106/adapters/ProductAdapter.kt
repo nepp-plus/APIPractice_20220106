@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.neppplus.apipractice_20220106.R
 import com.neppplus.apipractice_20220106.models.ProductData
 import com.neppplus.apipractice_20220106.models.ReviewData
+import java.text.NumberFormat
 
 
 class ProductAdapter(
@@ -21,9 +22,21 @@ class ProductAdapter(
 
     inner class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
 
+        val imgProduct = row.findViewById<ImageView>(R.id.imgProduct)
+        val txtProductName = row.findViewById<TextView>(R.id.txtProductName)
+        val txtProductPrice = row.findViewById<TextView>(R.id.txtProductPrice)
+        val imgStoreLogo = row.findViewById<ImageView>(R.id.imgStoreLogo)
+        val txtStoreName = row.findViewById<TextView>(R.id.txtStoreName)
 
         fun bind(data: ProductData) {
 
+            txtProductName.text =  data.name
+            txtStoreName.text = data.store.name
+
+            txtProductPrice.text = "${ NumberFormat.getInstance().format(data.price) }원"
+
+            Glide.with(mContext).load(data.imageURL).into(imgProduct)
+            Glide.with(mContext).load(data.store.logoURL).into(imgStoreLogo)
 
         }
 
